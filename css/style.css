@@ -1,0 +1,86 @@
+#plugin {
+    
+    /* en option */
+    width: 300px;
+    height: 150px;
+    /*************/
+    
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px black;
+    
+    background-color: #4A535A;
+    position: absolute;
+    left: 150px;
+    top: 150px;
+    
+    
+    color: white;
+    font-family: cursive;
+}
+
+#plugin #heure {
+    /*border: 1px solid black;*/
+    width: 150px;
+    position: absolute;
+    
+    color: black;
+    
+    
+    /* en option */
+    left: 75px;
+    top : -55px;
+  /****************/
+    
+    
+}
+
+#plugin #heure p {
+    border: 1px solid black;
+    display: inline-block;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    width: 70px;
+    
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px black;
+    
+    font-size: 30px;
+    font-weight: 500;
+
+}
+
+
+
+#plugin img {
+    position: absolute;
+    top : 60px;
+    left : 125px;
+}
+
+
+#plugin #ville {
+    position: absolute;
+    top : 40px;
+    left : 25px;
+}
+
+
+#plugin #condition {
+    position: absolute;
+    top : 80px;
+    left : 25px;
+}
+
+
+#plugin #temp {
+    position: absolute;
+    top : 20px;
+    left : 195px;
+    
+    
+    font-size: 35px;
+    font-weight: 200;
+}
