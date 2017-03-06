@@ -1,31 +1,31 @@
-#plugin {
+.meteo {
     
     /* en option */
-    width: 300px;
-    height: 150px;
+    min-width: 300px;
+    min-height: 150px;
     /*************/
     
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 2px 2px black;
+
+
     
-    background-color: #4A535A;
+
     position: absolute;
-    left: 150px;
-    top: 150px;
-    
     
     color: white;
     font-family: cursive;
 }
 
-#plugin #heure {
-    /*border: 1px solid black;*/
+.meteo #heure {
+
     width: 150px;
     position: absolute;
     
     color: black;
     
+ 
     
     /* en option */
     left: 75px;
@@ -35,7 +35,10 @@
     
 }
 
-#plugin #heure p {
+.meteo #heure p {
+    
+ /*  position: absolute;*/
+    
     border: 1px solid black;
     display: inline-block;
     height: 50px;
@@ -54,33 +57,40 @@
 
 
 
-#plugin img {
+.meteo img {
     position: absolute;
+    
     top : 60px;
     left : 125px;
 }
 
 
-#plugin #ville {
+.meteo #ville {
     position: absolute;
-    top : 40px;
+    top : 60px;
     left : 25px;
 }
 
 
-#plugin #condition {
+.meteo #condition {
     position: absolute;
-    top : 80px;
+    top : 115px;
     left : 25px;
 }
 
 
-#plugin #temp {
+.meteo #temp {
     position: absolute;
-    top : 20px;
-    left : 195px;
+    top : 60px;
+    left : 180px;
     
     
     font-size: 35px;
     font-weight: 200;
+}
+
+.meteo #btn1 {
+    border-radius: 50px;
+    margin-left: 2px;
+    
 }
