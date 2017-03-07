@@ -1,3 +1,4 @@
+
 .meteo {
     
     /* en option */
@@ -18,7 +19,7 @@
     font-family: cursive;
 }
 
-.meteo #heure {
+.meteo .heure {
 
     width: 150px;
     position: absolute;
@@ -35,7 +36,7 @@
     
 }
 
-.meteo #heure p {
+.meteo .heure p {
     
  /*  position: absolute;*/
     
@@ -57,7 +58,7 @@
 
 
 
-.meteo img {
+.meteo .imgcond {
     position: absolute;
     
     top : 60px;
@@ -65,21 +66,21 @@
 }
 
 
-.meteo #ville {
+.meteo .ville {
     position: absolute;
     top : 60px;
     left : 25px;
 }
 
 
-.meteo #condition {
+.meteo .condition {
     position: absolute;
     top : 115px;
     left : 25px;
 }
 
 
-.meteo #temp {
+.meteo .temp {
     position: absolute;
     top : 60px;
     left : 180px;
@@ -89,8 +90,14 @@
     font-weight: 200;
 }
 
-.meteo #btn1 {
+.meteo .btn1 {
     border-radius: 50px;
     margin-left: 2px;
     
+}
+
+.meteo .icon {
+    position: absolute;
+    top : 4px;
+    left : 35px;
 }

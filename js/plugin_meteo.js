@@ -9,7 +9,8 @@
                 fahrenheit : false,
                 background : '#4A535A',
                 width : 300,
-                height : 150
+                height : 150,
+                draggable : true
 
            	};
         
@@ -17,6 +18,7 @@
         
 		var options = $.extend(defauts, options); 
         
+        // à déplacer
         var fah = options.fahrenheit;
         
         
@@ -39,22 +41,23 @@
         
         
         
-        /** rafraichisement : button
-        $('.btn-plugin).click(startrefresh);
-        
-        startrefresh();
-        
-        */
+
         
         function getHtmlPlugin(html){
             
-            html = "<div id='heure'><p id='hour'></p><p id='minute'></p></div>";
-            html += "<div id='ville'></div>";
-            html += "<div id='condition'></div>";
-            html += "<img src='#' height='45' width='45' alt='meteo'/>";
-            html += "<div id='temp'></div>";
+            html = "<div class='heure'><p class='hour'></p><p class='minute'></p></div>";
+            html += "<div class='ville'></div>";
+            html += "<div class='condition'></div>";
+            html += "<img class='imgcond' src='#' height='45' width='45' alt='meteo'/>";
+            html += "<div class='temp'></div>";
+            if(fah==true){
+                html += "<button class='btn1' >°C</button>"
+            } else {
+                html += "<button class='btn1' >°F</button>"
+            }
             
-            html += "<button id='btn1' >°F</button>"
+            
+            html += "<img height='20' width='20' class='icon' src='icon-reload.png' alt=''/>"
             
             return html;
         }
@@ -82,13 +85,15 @@
             return value*1.8 + 32;
         }
         
-        /* génération de la date */
-        var d = new Date();
-        var h = pad(d.getHours());
-        var m = pad(d.getMinutes());
+        
         
         
         function refresh(urlMeteo){
+            
+            /* génération de la date */
+            var d = new Date();
+            var h = pad(d.getHours());
+            var m = pad(d.getMinutes());
                 
             getDataMeteo(urlMeteo)
 				.then(function(result){
@@ -104,26 +109,18 @@
                     var ville = result.city_info.name;
                 
 
-					$("#ville").text(ville);
-					$("#condition").text(currentCondition);
-                    $("#temp").text(temp);
-                    $("#hour").text(h);
-                    $("#minute").text(m);
-                    $("img").attr('src',img);
+					$(".ville").text(ville);
+					$(".condition").text(currentCondition);
+                    $(".temp").text(temp);
+                    $(".hour").text(h);
+                    $(".minute").text(m);
+                    $(".imgcond").attr('src',img);
                     
                 
                 
 				});
             }
         
-        /*
-            $("#btn1").click(function(){
-                //var btn = $(this);
-                alert("f");
-
-            });
-
-        */
 
 
         
@@ -132,35 +129,51 @@
             
             
             
+            
+            
             var self = $(this);
             createPluginCss(self);
             var html = getHtmlPlugin();
             self.html(html);
             
-            var urlMeteo = "http://www.prevision-meteo.ch/services/json/bern";
+            if(options.draggable == true){
+                $(this).draggable();
+            }
+            
+            
+            var urlMeteo = "http://www.prevision-meteo.ch/services/json/bordeaux";
             
             refresh(urlMeteo);
             
-            $("button").on("click",function(){
+            $(".btn1").on("click",function(){
                 
                 
                 var btn = $(this);
+                console.log(btn);
+                
                 
                 if(btn.text() == "°F"){
+                    
                     btn.text("°C");
                     fah=true;
                     refresh(urlMeteo);
-                    //location.reload();
+
                 }else{
                     btn.text("°F");
                     fah=false;
                     refresh(urlMeteo);
-                    //location.reload();
+
                 }
                 
                 
                 
             });
+            
+            $("#icon").on("click",function(){
+                refresh(urlMeteo);
+            });
+            
+            
 
        	});
         

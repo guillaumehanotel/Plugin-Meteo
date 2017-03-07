@@ -3,28 +3,57 @@
 
 <head>
     <title>Plugin Météo</title>
-    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="js/plugin_meteo.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/plugin_meteo.js"></script>
+    
+    
+    
+    
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> </head>
 
 <body>
 
-<div class="meteo" id="meteo"></div>
+    
+    
+    <div class="meteo" id="meteo1"></div>
+    
+    <div class="meteo" id="meteo2">
+    </div>
     
     <script>
         $(document).ready(function () {
-            $(".meteo").pluginmeteo({
-                //background : 'red'
-                //top : 300
-                //left : 50
-                //fahrenheit : false
-                //width : 300
-                //height : 150
+            
+           
+            
+            
+             $("#meteo2").pluginmeteo({
+                top : 350,
+                left : 350
+
                 
+            });   
+            
+            $("#meteo1").pluginmeteo({
+                //background :  (default : #4A535A)
+                //top :         (default : 150)
+                //left :        (default : 150)
+                //fahrenheit :  (default : false)
+                //width :       (default : 300)
+                //height :      (default : 150)
+                //draggable :   (default : true)
                 
             });
+            
+            
+           
+            
+            
             
         });
     </script>
