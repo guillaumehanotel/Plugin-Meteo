@@ -61,14 +61,14 @@
 .meteo .imgcond {
     position: absolute;
     
-    top : 60px;
-    left : 125px;
+    top : 70px;
+    left : 105px;
 }
 
 
 .meteo .ville {
     position: absolute;
-    top : 60px;
+    top : 40px;
     left : 25px;
 }
 

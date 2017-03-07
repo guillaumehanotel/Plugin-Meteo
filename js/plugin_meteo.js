@@ -68,6 +68,13 @@
         
         function getDataMeteo (urlMeteo) {
 			return $.ajax(urlMeteo);
+                /*
+            .done(function(){
+                alert('toto');
+            }).fail(function(){
+                alert('tata');
+            });
+            */
 		}
         
         /* fonction pour afficher les 0 manquants dans l'heure et les minutes */
@@ -88,7 +95,7 @@
         
         
         
-        function refresh(urlMeteo){
+        function refresh(urlMeteo,self){
             
             /* génération de la date */
             var d = new Date();
@@ -109,12 +116,12 @@
                     var ville = result.city_info.name;
                 
 
-					$(".ville").text(ville);
-					$(".condition").text(currentCondition);
-                    $(".temp").text(temp);
-                    $(".hour").text(h);
-                    $(".minute").text(m);
-                    $(".imgcond").attr('src',img);
+					$(".ville",self).text(ville);
+					$(".condition",self).text(currentCondition);
+                    $(".temp",self).text(temp);
+                    $(".hour",self).text(h);
+                    $(".minute",self).text(m);
+                    $(".imgcond",self).attr('src',img);
                     
                 
                 
@@ -141,27 +148,27 @@
             }
             
             
-            var urlMeteo = "http://www.prevision-meteo.ch/services/json/bordeaux";
+            var urlMeteo = "http://www.prevision-meteo.ch/services/json/chatelaillon-plage";
             
-            refresh(urlMeteo);
+            refresh(urlMeteo,self);
             
-            $(".btn1").on("click",function(){
+            $(".btn1",self).on("click",function(){
                 
                 
                 var btn = $(this);
-                console.log(btn);
+               // console.log(btn);
                 
                 
                 if(btn.text() == "°F"){
                     
                     btn.text("°C");
                     fah=true;
-                    refresh(urlMeteo);
+                    refresh(urlMeteo,self);
 
                 }else{
                     btn.text("°F");
                     fah=false;
-                    refresh(urlMeteo);
+                    refresh(urlMeteo,self);
 
                 }
                 
@@ -169,8 +176,8 @@
                 
             });
             
-            $("#icon").on("click",function(){
-                refresh(urlMeteo);
+            $(".icon").on("click",function(){
+                refresh(urlMeteo,self);
             });
             
             
