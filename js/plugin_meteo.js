@@ -16,6 +16,7 @@
         
         
         
+        
 		var options = $.extend(defauts, options); 
         
         // variable servant à stocker l'option fahrenheit(bool) pour savoir si la temp est en Celsius ou en Fahrenhait
@@ -41,7 +42,6 @@
         
         
         
-
         // Fonction servant à créer et renvoyer le html du plugin
         function getHtmlPlugin(html){
             
@@ -59,9 +59,6 @@
             
             html += "<div class='recherche'>R</div>"
             html += "<div class='search-box display'><input placeholder='Entrez un nom de ville' class='input' type='text'></input><button class='go'>Go</button></div>"
-            
-            
-            
             html += "<img height='20' width='20' class='icon' src='icon-reload.png' alt=''/>"
             
             return html;
@@ -93,9 +90,6 @@
         }
         
         
-    
-        
-        
         // fonction servant à ajouter les données aux éléments HTML du plugin
         function refresh(urlMeteo,self){
             
@@ -115,9 +109,6 @@
                         var temp = result.current_condition.tmp+"°C";
                     } else {
                         var temp = toFahren(result.current_condition.tmp)+"°F";
-                        
-                        //var tempf = temp.substring(0,4);
-                        //temp = temp+"°F";
                     }
 					
                 
@@ -146,20 +137,14 @@
         
 
         
-        
+        //ville par défaut
         var ville = 'paris';
         
         
 		return this.each(function(){
             
             // lien de la ville
-            //var urlMeteo = "http://www.prevision-meteo.ch/services/json/"+ville;
-            
-            
-            
             var urlMeteo = getURLVille(ville);
-            
-            
             
             
             // self est désigne 1 instance du plugin
@@ -179,10 +164,7 @@
                 $(this).draggable();
             }
             
-            
-            
-            
-            
+              
             //ajout des données à l'instance en fct de l'url donné
             refresh(urlMeteo,self);
             
