@@ -57,6 +57,10 @@
                 html += "<button class='btn1' >°F</button>"
             }
             
+            html += "<div class='recherche'>R</div>"
+            html += "<div class='search-box display'><input placeholder='Entrez un nom de ville' class='input' type='text'></input><button class='go'>Go</button></div>"
+            
+            
             
             html += "<img height='20' width='20' class='icon' src='icon-reload.png' alt=''/>"
             
@@ -69,13 +73,7 @@
         //Fonction servant à récupérer les données de l'API
         function getDataMeteo (urlMeteo) {
 			return $.ajax(urlMeteo);
-                /*
-            .done(function(){
-                alert('toto');
-            }).fail(function(){
-                alert('tata');
-            });
-            */
+
 		}
         
         
@@ -95,29 +93,7 @@
         }
         
         
-        /*
-        function testURL(urlMeteo){
-            
-            var res;
-            
-            getDataMeteo(urlMeteo).then(function(result){
-                var tmp = result.current_condition.tmp;
-                
-                
-                if(isNaN(tmp) == false){
-                    res =  true;
-                } else {
-                    res = false;
-                }
-                
-                return res;
-                
-            });
-            
-            console.log(res);
-            return res; 
-        }
-        */
+    
         
         
         // fonction servant à ajouter les données aux éléments HTML du plugin
@@ -130,11 +106,8 @@
                 
             getDataMeteo(urlMeteo)
 				.then(function(result){
-                
-                
                     // on stocke les données voulues dans des variables
                     //console.log(result);
-                  
                 
 					var currentCondition = result.current_condition.condition;
                     //température en celsius ou fahrenheit selon la variable fah
@@ -142,6 +115,9 @@
                         var temp = result.current_condition.tmp+"°C";
                     } else {
                         var temp = toFahren(result.current_condition.tmp)+"°F";
+                        
+                        //var tempf = temp.substring(0,4);
+                        //temp = temp+"°F";
                     }
 					
                 
@@ -156,24 +132,32 @@
                     $(".minute",self).text(m);
                     $(".imgcond",self).attr('src',img);
                     
-                
-                
-				}).fail(function(result){
-                
-
+				}).fail(function(result){ 
                 
                 });
             }
         
 
+        function getURLVille(ville){
+            return "http://www.prevision-meteo.ch/services/json/"+ville;
+        }
+        
+        
         
 
+        
+        
+        var ville = 'paris';
         
         
 		return this.each(function(){
             
             // lien de la ville
-            var urlMeteo = "http://www.prevision-meteo.ch/services/json/chatelaillon-plage";
+            //var urlMeteo = "http://www.prevision-meteo.ch/services/json/"+ville;
+            
+            
+            
+            var urlMeteo = getURLVille(ville);
             
             
             
@@ -227,8 +211,28 @@
                 refresh(urlMeteo,self);
             });
             
+            // bouton pour ouvrir la box
+            $(".recherche",self).on("click",function(){
+                
+                $(".search-box",self).toggleClass('display');
+                
+            });    
             
-            //console.log(res);            
+            
+            // bouton go
+            $(".go",self).on("click",function(){
+                //on récupère la ville
+                var ville = $(".input",self).val();
+                //on récupère l'url de la ville
+                urlMeteo = getURLVille(ville);
+                //refresh
+                refresh(urlMeteo,self);
+                // on enleve la box
+                $(".search-box",self).toggleClass('display');
+                
+            });  
+            
+            
 
        	});
         

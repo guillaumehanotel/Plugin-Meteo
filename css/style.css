@@ -96,8 +96,64 @@
     
 }
 
+.meteo .btn1:hover {
+    cursor: pointer;
+    
+}
+
+
+
+
 .meteo .icon {
     position: absolute;
     top : 4px;
     left : 35px;
 }
+
+
+.meteo .icon:hover {
+    cursor: pointer;
+}
+
+.meteo .recherche {
+    
+    position: absolute;
+    background-color: white;
+    color: black;
+    width: 20px;
+    text-align: center;
+    top : 4px;
+    left : 250px;
+    border-radius: 10px;
+}
+
+.meteo .recherche:hover {
+    box-shadow: 2px 2px black;
+    cursor: pointer;
+}
+
+
+
+
+
+.meteo .search-box {
+
+    background-color: black;
+    width: 230px;
+    text-align: center;
+    height: 30px;
+    line-height: 25px;
+    border-radius: 10px;
+    position: absolute;
+    top : -35px;
+    left : 250px;
+    
+}
+
+.meteo .display {
+    display: none;
+}
+
+
+
+
